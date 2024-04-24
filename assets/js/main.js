@@ -120,9 +120,7 @@ calcBtnWrapper.addEventListener('click', (e) => {
         if(getValue === 'AC') {
             calcProcess.innerText = ''
             return;
-        }
-        
-        if(getValue === '=') {
+        } else if(getValue === '=') {
             let calc = calcProcess.innerText;
             calc = calc.substring(0, calc.length - 1);
             if(operator.includes(calc[calc.length - 1])) {
@@ -138,7 +136,7 @@ calcBtnWrapper.addEventListener('click', (e) => {
         const size = calcProcess.innerText.length;
         
         if(operator.includes(prev) && operator.includes(incoming)) {
-            calcProcess.innerText = calcProcess.innerText.substring(0, size - 1);;
+            calcProcess.innerText = calcProcess.innerText.substring(0, size - 1);
         }
     }
 })
