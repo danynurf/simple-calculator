@@ -1,0 +1,80 @@
+:root {
+    --primary: #7165FF;
+    --white: #fff;
+    --text: hsl(0, 0%, 0%, 75%);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: black;
+    font-weight: 500;
+}
+
+.calculator-container {
+    background-color: var(--primary);
+    height: 100vh;
+}
+
+.calculator-card {
+    height: 80vh;
+    width: 20rem;
+    background-color: var(--white);
+    padding: 1.5rem;
+    border-radius: 10px;
+}
+
+.display-calculation {
+    height: 28%;
+    width: 100%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: end;
+    font-size: 2rem;
+}
+
+.calc-result {
+    width: 100%;
+    border: none;
+    display: none;
+}
+
+.calculator-btn-wrapper {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: .5rem;
+    column-gap: 1rem;
+    justify-content: center;
+}
+
+.calc-btn--item {
+    border: none;
+    outline: none;
+    height: 3.5rem;
+    width: 3.5rem;
+    border-radius: 50px;
+    background: linear-gradient(315deg, hsla(216, 14%, 93%, 1), hsla(210, 18%, 96%, 1));
+    box-shadow: 5px 5px 10px hsla(211, 8%, 50%, 0.5), -5px -5px 10px hsla(0, 0%, 100%, 0.5);
+}
+
+.btn-0 {
+    width: 72% !important;
+}
+
+.operator-btn {
+    color: var(--primary);
+    font-weight: 500;
+}
+
+.calc-btn--item:hover {
+    box-shadow: 5px 5px 10px hsla(212, 10%, 65%, 0.5) inset, -5px -5px 10px hsla(0, 0%, 100%, 0.5) inset;
+}
+
+.calc-btn--item:active {
+    background: linear-gradient(#7165FF, #7165FF);
+    color: var(--white);
+    box-shadow: none;
+}
