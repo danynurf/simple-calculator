@@ -109,45 +109,36 @@ btnCalculator.forEach((elem) => {
     calcBtnWrapper.appendChild(btnCalcKey)
 })
 
-// const calcBtnWrapper =
+const calcProcess = document.getElementById('calcProcess');
 
-const calcProcess = document.getElementById('calcProcess')
-const calcResult = document.getElementById('calcResult')
-let getValue;
-calcBtnWrapper.addEventListener('click', function (even) {
-    if(even.target.tagName === 'BUTTON') {
-        getValue = even.target.innerText
+calcBtnWrapper.addEventListener('click', (e) => {
+    if(e.target.tagName === 'BUTTON') {
+        const getValue = e.target.innerText;
+        const operator = ['+', '-', '/', '*'];
         calcProcess.innerText += getValue
-
+        
         if(getValue === 'AC') {
-            calcResult.value = ''
             calcProcess.innerText = ''
             return;
-        } 
-
-        btnCalculator.forEach((elem) => {
-            if(elem.value === getValue) {
-                calcResult.value += elem.value
-                const operator = ['+', '-', '/', '*']
-                const prev = calcResult.value[calcResult.value.length - 2]
-                const incoming = calcResult.value[calcResult.value.length - 1]
-                const size = calcResult.value.length
-                
-                if(operator.includes(prev) && operator.includes(incoming)) {
-                    calcResult.value = calcResult.value.substr(0, size - 1);
-                    calcProcess.innerText = calcResult.value;
-                }
-
-                if(elem.value === '=') {
-                    let calc = document.getElementById('calcResult').value.substr(0, size - 1);
-                    if(operator.includes(calc[calc.length - 1])) {
-                        calc = calc.substr(0, calc.length - 1)
-                    }
-                    let result = eval(calc)
-                    calcProcess.innerText = result;
-                    return;              
-                }
+        }
+        
+        if(getValue === '=') {
+            let calc = calcProcess.innerText;
+            calc = calc.substring(0, calc.length - 1);
+            if(operator.includes(calc[calc.length - 1])) {
+                calc = calc.substring(0, calc.length - 1);
             }
-        })
+            let result = eval(calc);
+            calcProcess.innerText = result;
+            return;              
+        }
+
+        const prev = calcProcess.innerText[calcProcess.innerText.length - 2];
+        const incoming = calcProcess.innerText[calcProcess.innerText.length - 1];
+        const size = calcProcess.innerText.length;
+        
+        if(operator.includes(prev) && operator.includes(incoming)) {
+            calcProcess.innerText = calcProcess.innerText.substring(0, size - 1);;
+        }
     }
 })
